@@ -1,11 +1,10 @@
 import 'reflect-metadata';
 import { injectable, inject } from 'tsyringe';
-
 import AppError from '@shared/errors/AppError';
-import IUsersRepository from '../repositories/IUsersRepository';
-import IHashProvider from '../providers/hashProvider/models/IHashProvider';
 
-import User from '../infra/typeorm/entities/User';
+import User from '@modules/users/infra/typeorm/entities/User';
+import IHashProvider from '@modules/users/providers/hashProvider/models/IHashProvider';
+import IUsersRepository from '../repositories/IUsersRepository';
 
 interface IRequest {
   name: string;
@@ -23,7 +22,7 @@ class CreateUserService {
     private hashProvider: IHashProvider,
   ) {}
 
-  async execute({ name, email, password }: IRequest): Promise<User> {
+  public async execute({ name, email, password }: IRequest): Promise<User> {
     const checkUserExists = await this.usersRepository.findByEmail(email);
 
     if (checkUserExists) {
