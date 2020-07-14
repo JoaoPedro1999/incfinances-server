@@ -7,9 +7,9 @@ import transactionsRouter from '@modules/transactions/infra/http/routes/transact
 
 const routes = Router();
 
-routes.get('/', (Request, Response) => {
-  return Response.json({ message: 'Hello Incca' });
-});
+// routes.get('/', (Request, Response) => {
+//   return Response.json({ message: 'Hello Incca' });
+// });
 routes.use('/users', usersRoter);
 routes.use('/sessions', sessionsRouter);
 routes.use('/profile', profileRouter);
