@@ -1,13 +1,13 @@
 /* eslint-disable no-param-reassign */
 import { getRepository, Repository } from 'typeorm';
 
-import ITransactionRepository from '@modules/transactions/repositories/ITransactionRepository';
+import ITransactionsRepository from '@modules/transactions/repositories/ITransactionsRepository';
 import ICreateTransactionDTO from '@modules/transactions/dtos/ICreateTransactionDTO';
 
 import Transaction from '@modules/transactions/infra/typeorm/entities/Transaction';
 import IBalanceDTO from '@modules/transactions/dtos/IBalanceDTO';
 
-class TransactionsRepository implements ITransactionRepository {
+class TransactionsRepository implements ITransactionsRepository {
   private ormRepository: Repository<Transaction>;
 
   constructor() {
@@ -19,6 +19,7 @@ class TransactionsRepository implements ITransactionRepository {
   ): Promise<Transaction[]> {
     const transactions = this.ormRepository.find({
       where: { user_id },
+      relations: ['category'],
     });
 
     return transactions;

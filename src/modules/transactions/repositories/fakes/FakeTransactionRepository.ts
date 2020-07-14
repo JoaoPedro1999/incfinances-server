@@ -1,13 +1,13 @@
 /* eslint-disable no-param-reassign */
-import ITransactionRepository from '@modules/transactions/repositories/ITransactionRepository';
+import ITransactionsRepository from '@modules/transactions/repositories/ITransactionsRepository';
 import ICreateTransactionDTO from '@modules/transactions/dtos/ICreateTransactionDTO';
 
 import Transaction from '@modules/transactions/infra/typeorm/entities/Transaction';
 import IBalanceDTO from '@modules/transactions/dtos/IBalanceDTO';
 import { uuid } from 'uuidv4';
 
-class FakeTransactionRepository implements ITransactionRepository {
-  private transactions: Transaction[];
+class FakeTransactionRepository implements ITransactionsRepository {
+  private transactions: Transaction[] = [];
 
   public async findAllTransactionByUser(
     user_id: string,

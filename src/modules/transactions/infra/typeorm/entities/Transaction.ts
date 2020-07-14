@@ -15,12 +15,19 @@ class Transaction {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Column('varchar')
+  user_id: string;
+
   @ManyToOne(() => User)
   @JoinColumn({ name: 'user_id' })
   user: User;
 
   @Column('varchar')
-  user_id: string;
+  category_id: string;
+
+  @ManyToOne(() => Category)
+  @JoinColumn({ name: 'category_id' })
+  category: Category;
 
   @Column('varchar')
   title: string;
@@ -30,13 +37,6 @@ class Transaction {
 
   @Column('decimal')
   value: number;
-
-  @Column('varchar')
-  category_id: string;
-
-  @ManyToOne(() => Category)
-  @JoinColumn({ name: 'category_id' })
-  category: Category;
 
   @CreateDateColumn()
   created_at: Date;

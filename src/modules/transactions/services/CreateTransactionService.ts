@@ -20,7 +20,7 @@ class CreateTransactionService {
     @inject('TransactionsRepository')
     private transactionRepository: ITransactionsRepository,
 
-    @inject('CategroiesRepository')
+    @inject('CategoriesRepository')
     private categoryRepository: ICategoriesRepository,
   ) {}
 
@@ -31,7 +31,10 @@ class CreateTransactionService {
     type,
     value,
   }: Request): Promise<Transaction | null> {
-    let findCategory = await this.categoryRepository.findCategory(category);
+    let findCategory = await this.categoryRepository.findCategory({
+      title: category,
+      user_id,
+    });
 
     if (type === 'outcome') {
       const { total } = await this.transactionRepository.getBalance(user_id);
@@ -42,13 +45,16 @@ class CreateTransactionService {
     }
 
     if (!findCategory) {
-      findCategory = await this.categoryRepository.create(title);
+      findCategory = await this.categoryRepository.create({
+        title: category,
+        user_id,
+      });
     }
 
     const transaction = this.transactionRepository.create({
       user_id,
       title,
-      category: findCategory,
+      category_id: findCategory.id,
       type,
       value,
     });
