@@ -1,0 +1,17 @@
+{
+  "type": "postgres",
+  "host": "157.245.252.101",
+  "port": "5432",
+  "username": "postgres",
+  "password": "inccadeploy",
+  "database": "incfinances",
+  "entities": [
+    "./src/modules/**/infra/typeorm/entities/*.ts"
+  ],
+  "migrations": [
+    "./src/shared/infra/typeorm/migrations/*.ts"
+  ],
+  "cli": {
+    "migrationsDir":"./src/shared/infra/typeorm/migrations"
+  }
+}
