@@ -1,3 +1,9 @@
+/*
+ * This file is responsible for creating the user,
+ * checking if the email has already been registered previously
+ * and generating the hash of the new user's password.
+ */
+
 import 'reflect-metadata';
 import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';

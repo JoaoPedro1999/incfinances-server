@@ -1,3 +1,5 @@
+/* This file is responsible for updating the user's profile. */
+
 import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';

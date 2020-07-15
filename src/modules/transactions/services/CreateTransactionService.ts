@@ -1,3 +1,7 @@
+/*
+ * This file is responsible for creating a new transaction,
+ * also checking the balance for creating an outgoing transaction. */
+
 import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 

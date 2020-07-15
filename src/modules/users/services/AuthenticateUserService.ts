@@ -1,4 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/*
+ * This file is responsible for authenticating the user in the application,
+ * verifying if the user exists and if it exists, verifies that the password
+ * entered is the same as previously registered.
+ */
 import 'reflect-metadata';
 import { sign } from 'jsonwebtoken';
 import { injectable, inject } from 'tsyringe';

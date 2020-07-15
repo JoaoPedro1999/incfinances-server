@@ -1,3 +1,5 @@
+/* This file is responsible for displaying the user's transactions. */
+
 import 'reflect-metadata';
 
 import { injectable, inject } from 'tsyringe';

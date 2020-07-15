@@ -1,3 +1,5 @@
+/* This file is responsible for displaying user information. */
+
 import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
